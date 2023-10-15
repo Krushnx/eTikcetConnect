@@ -16,7 +16,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "devstart": "nodemon index.js"
+    "devstart": "nodemon index.js",
+    "start" : "node index.json"
   },
   "author": "",
   "license": "ISC",
