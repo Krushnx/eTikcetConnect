@@ -43,6 +43,8 @@ const ticketRoutes = require('./routes/ticketRoutes')
 
 app.use('/auth' , userRoutes);
 app.use('/ticket' , ticketRoutes)
+app.get('/' , (req , res)=>{res.sendStatus(200)});
+
 
 app.listen(PORT, ()=>{
     console.log(`App listed on port http://localhost:8000`);
