@@ -33,14 +33,14 @@ const registerUser = async (req, res) => {
   
      
   
-      console.log(existingUser);
+      // console.log(existingUser);
   
       // Hash the password
   
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password , salt);
   
-      console.log(passwordHash);
+      // console.log(passwordHash);
   
   
       // Save the new user account to the database
@@ -60,9 +60,9 @@ const registerUser = async (req, res) => {
       // Send the token in a HTTP-only cookie
   
       res.cookie("token" , token , {
-        httpOnly:true
-        // secure:true,
-        // sameSite:"none"
+        httpOnly:true,
+        secure:true,
+        sameSite:"none"
       }).send();
   
   
@@ -108,9 +108,9 @@ const loginUser =  async (req , res)=>
 
     res.cookie("token" , token , {
       httpOnly:true
-      // ,
-      // secure:true,
-      // sameSite:"none"
+      ,
+      secure:true,
+      sameSite:"none"
     }).send();
 
 
@@ -129,8 +129,8 @@ const logoutUser = (req , res)=>{
     res.cookie("token" , "" , {
       httpOnly:true
       ,
-      // secure:true,
-      // sameSite:"none" , 
+      secure:true,
+      sameSite:"none" , 
       expires : new Date(0)}).send();
   }
 
