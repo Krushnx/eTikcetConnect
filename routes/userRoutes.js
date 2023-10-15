@@ -15,7 +15,7 @@ router.post("/login" ,loginUser);
 router.get("/logout" , logoutUser)
 
 
-// Authentication
+// Authentication done
 
 router.get('/loggedIN' ,authenticateUser )
   
