@@ -4,7 +4,7 @@ const User = require('../models/userSchema');
 
 const registerUser = async (req, res) => {
     try {
-      const {name, email, password, mobile,passwordVerify, isConductor } = req.body;
+      const {name, email, password, mobile,passwordVerify, isConductor , busRoute , busNumber } = req.body;
   
       // Validation
   
@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
       // Save the new user account to the database
   
       const newuser = new User({
-        name,email , passwordHash , mobile , isConductor
+        name,email , passwordHash , mobile , isConductor, busRoute , busNumber
       })
   
       const savedUser = await newuser.save();
@@ -170,5 +170,37 @@ const getUserData = async (req , res) =>
     }
 }
 
+const getUserName = (req , res)=>
+{
 
-  module.exports = {registerUser , loginUser ,logoutUser , authenticateUser , getUserData};
+    try {
+        res.json(res.username.name)
+        
+    } catch (error) {
+        res.status(500).json({message : error.message});
+    }
+}
+
+
+async function asyncFunc(req , res , next)
+{
+    let username;
+    try {
+        
+        username = await User.findById(req.params.id); 
+        if(username == null)
+        {
+            return res.status(404).json({message : "The Hotel you are looking for is not found in the database"});
+        }
+
+    } catch (error) {
+        
+    }
+
+    res.username = username;
+    next()
+}
+
+
+
+  module.exports = {registerUser , loginUser ,logoutUser , asyncFunc,authenticateUser , getUserData , getUserName};

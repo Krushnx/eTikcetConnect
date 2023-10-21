@@ -5,7 +5,9 @@ const ticketSchema = new mongoose.Schema({
   destination: { type: String, required: true },
   price: { type: String, required: true },
   date: { type: Date, default: Date.now },
-  createdBy : {type : String, required: true}
+  createdBy : {type : String, required: true} , 
+  ticketBusRoute : {type : String , required : true},
+  ticketBusNumber : {type : String , required : true},
 });
 
 const Ticket = mongoose.model("ticket", ticketSchema);

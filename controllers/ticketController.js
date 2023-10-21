@@ -8,7 +8,9 @@ const createTicket = async(req , res) =>
         destination: req.body.destination,
         price: req.body.price,
         date: req.body.date,
-        createdBy:   req.body.createdBy       
+        createdBy:   req.body.createdBy,       
+        ticketBusRoute:   req.body.ticketBusRoute,       
+        ticketBusNumber:   req.body.ticketBusNumber     
     })
     try {
         const postentry = await newEntry.save();
@@ -34,12 +36,25 @@ async function asyncFunc(req , res , next)
         }
 
     } catch (error) {
-        
+        console.error(error);
+        res.status(500).send();
     }
 
     res.hotel = hotel;
     next()
 }
 
+const getAllTickets = async(req , res)=>
+{
+    try {
+        const result = await ticketSchema.find();
+        res.json(result)
 
-module.exports = {createTicket , asyncFunc};
+    } catch (error) {
+        console.error(error);
+        res.status(500).send();
+    }
+}
+
+
+module.exports = {createTicket , getAllTickets,asyncFunc};

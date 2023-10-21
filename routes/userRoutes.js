@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const auth = require('../middleware/auth')
-const {registerUser , loginUser, logoutUser , authenticateUser , getUserData} = require('../controllers/userControllers')
+const {registerUser , loginUser, logoutUser , authenticateUser , getUserData , getUserName , asyncFunc} = require('../controllers/userControllers')
 
 
 // Register
@@ -16,12 +16,14 @@ router.get("/logout" , logoutUser)
 
 
 // Authentication done
-
 router.get('/loggedIN' ,authenticateUser )
   
-  
+//  
 router.get('/userdata' , auth ,  getUserData )
 
+
+// 
+router.get('/getusername/:id' ,asyncFunc , getUserName)
 
 module.exports = router;
   
