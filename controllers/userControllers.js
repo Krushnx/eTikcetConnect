@@ -190,7 +190,7 @@ async function asyncFunc(req , res , next)
         username = await User.findById(req.params.id); 
         if(username == null)
         {
-            return res.status(404).json({message : "The Hotel you are looking for is not found in the database"});
+            return res.status(404).json({message : "The User you are looking for is not found in the database"});
         }
 
     } catch (error) {

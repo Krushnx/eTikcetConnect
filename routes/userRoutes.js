@@ -5,7 +5,6 @@ const {registerUser , loginUser, logoutUser , authenticateUser , getUserData , g
 
 
 // Register
-
 router.post("/", registerUser);
 
 // Log in User
