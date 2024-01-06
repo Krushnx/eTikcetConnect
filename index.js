@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(cookieParser())
 
 
-//importing Routes
+//importing Routes here
 
 const userRoutes = require('./routes/userRoutes')
 const ticketRoutes = require('./routes/ticketRoutes')
