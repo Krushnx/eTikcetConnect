@@ -8,6 +8,7 @@ const ticketSchema = new mongoose.Schema({
   createdBy : {type : String, required: true} , 
   ticketBusRoute : {type : String , required : true},
   ticketBusNumber : {type : String , required : true},
+  numberOfTickets : {type : mongoose.Schema.Types.Decimal128 , required : true , default : 1}
 });
 
 const Ticket = mongoose.model("ticket", ticketSchema);
