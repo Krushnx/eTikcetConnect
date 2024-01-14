@@ -38,13 +38,13 @@ app.use(cookieParser())
 
 const userRoutes = require('./routes/userRoutes')
 const ticketRoutes = require('./routes/ticketRoutes')
-
+const busRoutes = require('./routes/busRoute');
 //Using Routes
 
 app.use('/auth' , userRoutes);
 app.use('/ticket' , ticketRoutes)
 app.get('/' , (req , res)=>{res.sendStatus(200)});
-
+app.use('/bus',busRoutes);
 
 app.listen(PORT, ()=>{
     console.log(`App listed on port http://localhost:8000`);
