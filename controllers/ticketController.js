@@ -10,7 +10,8 @@ const createTicket = async(req , res) =>
         date: req.body.date,
         createdBy:   req.body.createdBy,       
         ticketBusRoute:   req.body.ticketBusRoute,       
-        ticketBusNumber:   req.body.ticketBusNumber     
+        ticketBusNumber:   req.body.ticketBusNumber,
+        ticketCount : req.body.ticketCount
     })
     try {
         const postentry = await newEntry.save();

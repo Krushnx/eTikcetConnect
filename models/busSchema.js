@@ -7,12 +7,12 @@ const priceSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true
+    required : true
   }
 });
 
 const busSchema = new mongoose.Schema({
-  busRoute: {
+  busRoute: { 
     type: String,
     required: true
   },
