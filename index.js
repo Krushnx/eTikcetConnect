@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 
 // Cors setup
 const corsOptions ={
-    origin:['http://localhost:3000' , 'https://e-ticketconnect.web.app'], 
+    origin:['http://localhost:3000' , 'https://e-ticketconnect.web.app', 'https://eticket-connect.web.app'], 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
