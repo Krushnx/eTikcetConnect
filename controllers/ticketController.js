@@ -11,7 +11,8 @@ const createTicket = async(req , res) =>
         createdBy:   req.body.createdBy,       
         ticketBusRoute:   req.body.ticketBusRoute,       
         ticketBusNumber:   req.body.ticketBusNumber,
-        ticketCount : req.body.ticketCount
+        ticketCount : req.body.ticketCount , 
+        verifyID : req.body.verifyID
     })
     try {
         const postentry = await newEntry.save();
@@ -58,4 +59,22 @@ const getAllTickets = async(req , res)=>
 }
 
 
-module.exports = {createTicket , getAllTickets,asyncFunc};
+
+
+const getOneTicket = async (req, res) => {
+    try {
+        const Ticket = await ticketSchema.findOne({ verifyID: req.params.ticketid });
+
+        // if (Ticket == null) {
+        //     return res.status(404).json({ message: "The Ticket with the given bus number is not found in the database" });
+        // }
+
+        res.json(Ticket);
+    } catch (error) {
+        console.error('Error in get Ticket:', error);
+        res.status(500).send();
+    }
+};
+
+
+module.exports = {createTicket , getAllTickets,asyncFunc , getOneTicket};

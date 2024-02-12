@@ -8,7 +8,6 @@ const {createBus , asyncFunc ,getBus, getAllBus} = require('../controllers/busCo
 router.post('/' , createBus)
 
 
-// Get all tickets
 router.get('/:busRoute' , getBus)
 
 
