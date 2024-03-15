@@ -31,6 +31,10 @@ const busSchema = new mongoose.Schema({
   prices: {
     type: [priceSchema],  // Embed the priceSchema in the busSchema
     required: true
+  } ,
+  timetable : {
+    type : [String],
+    required:true
   }
 });
 

@@ -6,7 +6,8 @@ const createBus = async (req, res) => {
         source: req.body.source,
         destination: req.body.destination,
         stops: req.body.stops,
-        prices: req.body.prices
+        prices: req.body.prices,
+        timetable : req.body.timetable
     });
 
     try {
