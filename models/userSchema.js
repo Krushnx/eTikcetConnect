@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   passwordHash: { type: String, required: true },
   isConductor : {type : Boolean , required : true , default:false},
   busRoute :{type : String} , 
-  busNumber : {type : String}
+  busNumber : {type : String} , 
+  userID: {type : String} 
 });
 
 const User = mongoose.model("user", userSchema);

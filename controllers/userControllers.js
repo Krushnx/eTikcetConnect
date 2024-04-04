@@ -4,7 +4,7 @@ const User = require('../models/userSchema');
 
 const registerUser = async (req, res) => {
     try {
-      const {name, email, password, mobile,passwordVerify, isConductor , busRoute , busNumber } = req.body;
+      const {name, email, password, mobile,passwordVerify, isConductor , busRoute , busNumber,userID } = req.body;
   
       // Validation
   
@@ -30,7 +30,6 @@ const registerUser = async (req, res) => {
       {
           return res.status(400).json({ errormessage: "An account with this email already exists" });
       }
-  
      
   
       // console.log(existingUser);
@@ -46,7 +45,7 @@ const registerUser = async (req, res) => {
       // Save the new user account to the database
   
       const newuser = new User({
-        name,email , passwordHash , mobile , isConductor, busRoute , busNumber
+        name,email , passwordHash , mobile , isConductor, busRoute , busNumber,userID
       })
   
       const savedUser = await newuser.save();
@@ -170,7 +169,7 @@ const getUserData = async (req , res) =>
     }
 }
 
-const getUserName = (req , res)=>
+const getUserName =  (req , res)=>
 {
 
     try {
@@ -179,6 +178,29 @@ const getUserName = (req , res)=>
     } catch (error) {
         res.status(500).json({message : error.message});
     }
+}
+const getName = async (req , res)=>
+{
+
+  try {
+    const { userID } = req.params;
+
+    // Query the database to find the user with the provided userID
+    const user = await User.findOne({ userID });
+
+    if (!user) {
+      // If user is not found, return 404 Not Found
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // If user is found, return the name
+    res.json({ name: user.name });
+  } catch (err) {
+    // If an error occurs, return 500 Internal Server Error
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+
 }
 
 
@@ -203,4 +225,4 @@ async function asyncFunc(req , res , next)
 
 
 
-  module.exports = {registerUser , loginUser ,logoutUser , asyncFunc,authenticateUser , getUserData , getUserName};
+  module.exports = {registerUser ,getName, loginUser ,logoutUser , asyncFunc,authenticateUser , getUserData , getUserName};

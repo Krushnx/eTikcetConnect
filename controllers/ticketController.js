@@ -12,7 +12,9 @@ const createTicket = async(req , res) =>
         ticketBusRoute:   req.body.ticketBusRoute,       
         ticketBusNumber:   req.body.ticketBusNumber,
         ticketCount : req.body.ticketCount , 
-        verifyID : req.body.verifyID
+        verifyID : req.body.verifyID,
+        userID : req.body.userID
+
     })
     try {
         const postentry = await newEntry.save();
