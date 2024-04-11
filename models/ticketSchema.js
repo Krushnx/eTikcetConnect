@@ -14,7 +14,6 @@ const ticketSchema = new mongoose.Schema({
 });
 
 const Ticket = mongoose.model("ticket", ticketSchema);
-// Two feilds not mandatary
 
 module.exports = Ticket;
 

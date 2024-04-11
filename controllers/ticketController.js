@@ -77,6 +77,17 @@ const getOneTicket = async (req, res) => {
         res.status(500).send();
     }
 };
+const getUsersTicket = async (req, res) => {
+    const userID = req.params.userID;
+
+    try {
+      const tickets = await ticketSchema.find({ userID });
+      res.json(tickets);
+    } catch (err) {
+      console.error("Error fetching tickets:", err);
+      res.status(500).json({ message: "Server error" });
+    }
+};
 
 
-module.exports = {createTicket , getAllTickets,asyncFunc , getOneTicket};
+module.exports = {createTicket , getUsersTicket,getAllTickets,asyncFunc , getOneTicket};
